@@ -9,6 +9,10 @@ from config import SECRET, AWS_ENDPOINT
 
 
 app = Flask(__name__)
+# SECRET et AWS_ENDPOINT sont des variables stockes dans le fichier config.py. Il devrait etre au chemin
+# ...\sources\config.py (ce fichier a ete envoye par email a info@trophees-nsi.fr) mais le code source a aussi ete
+# deposer lors du depot du projet si besoin) Ils sont stockés séparemment pour raisons de sécurité. Désolé pour tout
+# inconvénient.
 app.secret_key = SECRET
 # Se connecter a la base de donnees
 app.config['SQLALCHEMY_DATABASE_URI'] = AWS_ENDPOINT
