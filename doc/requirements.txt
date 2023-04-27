@@ -3,3 +3,5 @@ bs4
 requests
 flask_sqlalchemy
 datetime
+mysqlclient
+html5
