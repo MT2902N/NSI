@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<div class="button"> <a href="{{url_for('dashboard')}}"style="color: #ffffff; text-decoration: none;">Clicker ici pour revenir a la page d'accueil</a>  </div>
+		<h1 style="font-size: 53px; color: #336699;">{{ post.title }}</h1>
+		{% macro render_comment(comment, level=0) %}
+			<div class="row div2" style="margin-left: {{ level * 30 }}px;">
+				<p >{{ comment.content }}</p>
+				<t>Posté par {{ comment.user.username }} on {{ comment.created_at.strftime('%B %d %Y %H:%M:%S') }}</t>
+				 <form method="POST" action="{{ url_for('reply', post_id=post.id, comment_id=comment.id) }}" class="{{ 'has-error' if error else '' }}">
+						<input type="text" name="reply" class="box" placeholder="Répondre à ce commentaire">
+						<span class="error-message">{{ error_message }}</span>
+						<input id="submitcomment" type="submit" value="Envoyer" />
+				 </form>
+				<div class="replies">
+					{% for reply in comment.replies %}
+						{{ render_comment(reply, level=level+1) }}
+					{% endfor %}
+				</div>
+			</div>
+		{% endmacro %}
+		
+		<p>{{ post.content }}</p>
+		<t>Posté par {{ post.user.username }} on {{ post.created_at.strftime('%B %d %Y %H:%M:%S') }}</t>
+		<div class="div1">
+			<form method="POST" action="{{ url_for('comment', post_id=post.id) }}" class="{{ 'has-error' if error else '' }}">
+				<input type="text" name="comment" class="box" placeholder="Ecrivez un commentaire">
+				<span class="error-message">{{ error_message }}</span>
+				<input id="sub" type="submit" value="Envoyer" />
+			</form>
+		</div>
+		{% for comment in comments if comment.parent_id is none%}
+			{{ render_comment(comment) }}
+		{% endfor %}
+		<div class="pagination">
+			{% if pagination.has_prev %}
+			<a href="{{ url_for('comment', post_id=post_id, page=pagination.prev_num) }}">Précédent</a>
+			{% endif %}
+			  	{% for num in pagination.iter_pages() %}
+					{% if num %}
+						{% if num == pagination.page %}
+							<span class="current-page">{{ num }}</span>
+					{% else %}
+						<a href="{{ url_for('comment', post_id=post_id, page=num) }}">{{ num }}</a>
+					{% endif %}
+					{% else %}
+						<span class="ellipsis">...</span>
+					{% endif %}
+			  {% endfor %}
+			  {% if pagination.has_next %}
+			  		<a href="{{ url_for('comment', post_id=post_id, page=pagination.next_num) }}">Prochain</a>
+			  {% endif %}
+		</div>
+		<div>
+            
+        </div>
+	</body>
+</html>

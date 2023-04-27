@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<meta charset="utf-8">
+    </head>
+    <body>
+        <card class="card">
+            <div class='Bienvenue'>  <h1>Bienvenue {{username}}</h1> </div>
+	  	</card>
+        <card class="card">
+
+            <div class ='center-text'> <a href="{{url_for('submit')}}" style="color: #ffffff; text-decoration: none;">Classements d'universités</a>  </div>
+            <div class="center-text"> <a href="{{url_for('discussion')}}" style="color: #ffffff; text-decoration: none;">Discussion/Forum</a> </div>
+            <div class = 'center-text'> <a href="{{url_for('p_v_viewer')}}"style="color: #ffffff; text-decoration: none;">Vos posts et commentaires</a></div>
+        </card>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Discussion.png" alt="Forum Image" style="position: absolute; top: 400px; left: 500px;">
+    </body>
+</html>

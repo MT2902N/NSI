@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<div class="button"> <a href="{{url_for('dashboard')}}"style="color: #ffffff; text-decoration: none;">Clicker ici pour revenir a la page d'accueil</a>  </div>
+		{% for comment in comments %}
+			<div class="row">
+				<h2> <a href="{{ url_for('post_detail', post_id=comment.post.id) }}" style="color: #C83200; text-decoration: none;">{{ comment.content }}</a> </h2>
+			</div>
+		{% endfor %}
+		<div class="pagination">
+			{% if pagination.has_prev %}
+			<a href="{{ url_for('comment_viewer', post_id=comment.post.id, page=pagination.prev_num) }}">Précédent</a>
+			{% endif %}
+			  	{% for num in pagination.iter_pages() %}
+					{% if num %}
+						{% if num == pagination.page %}
+							<span class="current-page">{{ num }}</span>
+					{% else %}
+						<a href="{{ url_for('discussion', post_id=post_id, page=num) }}">{{ num }}</a>
+					{% endif %}
+					{% else %}
+						<span class="ellipsis">...</span>
+					{% endif %}
+			  {% endfor %}
+			  {% if pagination.has_next %}
+			  		<a href="{{ url_for('discussion', post_id=post_id, page=pagination.next_num) }}">Prochain</a>
+			  {% endif %}
+		</div>
+		<div>
+            
+        </div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar__container">	
+				<a id="navbar__logo"; style="color: #FFFFFF;">EDUK</a>
+				<img src="https://www.freepnglogos.com/uploads/graduation-cap-png/graduation-cap-variant-education-icons-27.png" alt="Graduation Hat" style="position: absolute; top: 250px; left: 100px;">		
+
+	  	<card class="card">
+			
+			<div class='center'>
+				<form method="POST" action="http://localhost:5000/login" class="{{ 'has-error' if error else '' }}">
+					<input type="text" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<input class="button" type="submit" value="Login">
+					<div><span class="error-message">{{ error_message }}</span></div>
+				</form>
+				<form method="POST" action="{{ url_for('signup_page') }}" class ="{{'has-success' if success else '' }}">
+					<h2>Tu n'as pas de compte? Fais en un!</h2>
+					<input class="button" type="submit" value="Sign Up">
+					<div><span class="success-message">{{ success_message }}</span></div>
+
+				</form>
+			</div>
+		
+	  	</card>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<div class="button"> <a href="{{url_for('dashboard')}}"style="color: #ffffff; text-decoration: none;">Clicker ici pour revenir a la page d'accueil</a>  </div>
+		<div class ='center-text'> <a href="{{url_for('new_post_page')}}" style="color: #FF8000; text-decoration: none;">Creer une nouvelle discussion</a>  </div>
+		<h1 style="font-size: 42px; color: #336699;" >Posts récents</h1>
+		
+		<div class="TO-IMPLEMENT">
+            <form method='POST' action="{{ url_for('search') }}">
+                <input type="text" name="query" placeholder="Rechercher...">
+            </form>
+        </div>
+		{% for post in posts %}
+			<div class="row">
+				<h2> <a href="{{ url_for('post_detail', post_id=post.id) }}" style="color: #C83200; text-decoration: none;">{{ post.title }}</a> </h2>
+			</div>
+		{% endfor %}
+		<div class="pagination">
+			{% if pagination.has_prev %}
+			<a href="{{ url_for('discussion', post_id=post_id, page=pagination.prev_num) }}">Précédent</a>
+			{% endif %}
+			  	{% for num in pagination.iter_pages() %}
+					{% if num %}
+						{% if num == pagination.page %}
+							<span class="current-page">{{ num }}</span>
+					{% else %}
+						<a href="{{ url_for('discussion', post_id=post_id, page=num) }}">{{ num }}</a>
+					{% endif %}
+					{% else %}
+						<span class="ellipsis">...</span>
+					{% endif %}
+			  {% endfor %}
+			  {% if pagination.has_next %}
+			  		<a href="{{ url_for('discussion', post_id=post_id, page=pagination.next_num) }}">Prochain</a>
+			  {% endif %}
+		</div>
+		<div>
+
+        </div>
+	</body>
+</html>

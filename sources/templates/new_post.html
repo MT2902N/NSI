@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+        <div class="button"> <a href="{{url_for('dashboard')}}"style="color: #ffffff; text-decoration: none;">Clicker ici pour revenir a la page d'accueil</a>  </div>
+		<h1 style="font-size: 42px; color: #336699;" >Commencer une nouvelle discussion</h1>
+        <form method="POST" action="http://localhost:5000/dashboard/discussion/new_post" class="{{ 'has-error' if error else '' }}">
+            <label for="title" style="font-size: 30px; color: #C83200;">Titre:</label>
+            <input type="text" id="title" name="title"><br><br>
+            <label for="content" style="display: block;font-size:28px;color: #C83200;">Contenu:</label>
+            <textarea id="content" name="content" style="height: 200px; width: 500px;"></textarea><br><br>
+            <input type="submit" value="Post" style="font-size: 20px;">
+            <div><span class="error-message">{{ error_message }}</span></div>
+        </form>
+        <div class="div2">
+            
+        </div>
+	</body>
+</html>

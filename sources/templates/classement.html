@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div class="button"> <a href="{{url_for('dashboard')}}"style="color: #ffffff; text-decoration: none;">Clicker ici pour revenir a la page d'accueil</a>  </div>
+	</head>
+	<body>
+        <card class="card">
+			
+				<div class='classement'>  <h1>Voici les classements des 20 meilleurs écoles de {{course}}</h1> </div>
+			
+	  	</card>
+        <div class="table-container">
+            <table>
+                {% for item in data %}
+                <tr>
+                    <td>{{loop.index}}  </td>
+                    <td>{{item}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div>
+            
+        </div>
+	</body>
+</html>
+<div >
+    
+</div>                       

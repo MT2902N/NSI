@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+        <card class="card">
+			<div class='center'>
+				<p>Mettez les notes prédictives de toutes vos spécialités</p>
+				<form method="POST" action="http://localhost:5000/equivalence" class="{{ 'has-error' if error else '' }}">
+					<input type="text" name="choice" class="box" placeholder="Ex: 16">
+
+					<input type="text" name="choice2" class="box" placeholder="Ex: 16">
+
+					<input type="text" name="choice3" class="box" placeholder="Ex: 16">
+
+					<p>Votre note predictive generale</p>
+					<input type="text" name="choice4" class="box" placeholder="Ex: 16">
+
+					<div><span class="error-message">{{ error_message }}</span></div>
+
+
+					<input id="sub" type="submit" value="Envoyer" />
+				</form>
+			</div>
+	  	</card>
+        <div>
+            <div class ='center-text'> <a href="{{url_for('resultat')}}">Clicker ici pour revenir a la page d'accueil</a>  </div>
+        </div>
+	</body>
+</html>

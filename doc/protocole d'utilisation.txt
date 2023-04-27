@@ -1,0 +1,27 @@
+Pour faire tourner le site, il suffit de faire tourner le fichier "main.py". Il faut ajouter le fichier "config.py" comme ceci:
+doc/
+  ├── doc.txt
+  ├── protocole.txt
+  └── requirements.txt
+sources/
+  ├── static/
+  │     └── style.css
+  └── templates/
+      ├── classement.html
+      ├── comment_viewer.html
+      ├── dashboard.html
+      ├── discussion.html
+      ├── equivalence.html
+      ├── index.html
+      ├── new_post.html
+      ├── p_v_viewer.html
+      ├── post_detail.html
+      ├── post_viewer.html
+      ├── request.html
+      └── signup.html
+  ├──config.py
+  ├──main.py
+
+
+Pour installer les libraries nécessaires: faire la commande suivante dans le repertoire ou se situe le code: "pip install -r ...\doc\requirements.txt"
+le "..." correpond au chemin ou vous avez storer le code (ex: C:\Projets\EDUK)

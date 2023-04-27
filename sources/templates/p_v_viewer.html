@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<meta charset="utf-8">
+    </head>
+    <body>
+        <card class="card">
+            <div class ='center-text' > <a href="{{url_for('post_viewer')}}" style="color: #ffffff; text-decoration: none; ">Vos posts</a>  </div>
+            <div class ='center-text'> <a href="{{url_for('comment_viewer')}}" style="color: #ffffff; text-decoration: none;">Vos commentaires</a>  </div>
+        </card>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Simple_Comments.svg" alt="Forum Image" style="position: absolute; top: 250px; left: 650px; ">
+    <body>
+</html>

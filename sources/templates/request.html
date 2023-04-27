@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div class="button"> <a href="{{url_for('dashboard')}}"style="color: #ffffff; text-decoration: none;">Clicker ici pour revenir a la page d'accueil</a>  </div>
+	</head>
+	<body> 
+        
+
+        <form id="form" action="http://localhost:5000/dashboard/course/classement" method="post">
+            <select name="Course">
+                <option value="art-and-design">Art et Design</option>
+                <option value="business-and-management-studies">Etudes Commerciales</option>
+                <option value="law">Loi</option>
+                <option value="psychology">Psychologie</option>
+                <option value="general-engineering">Ingénierie</option>
+                <option value="medicine">Medecine</option>
+                <option value="sports-science">Sciences Sportives</option>
+                <option value="computer-science">Informatique</option>
+            </select>
+            <input id="sub" type="submit" value="Envoyer" />
+        </form>
+        <img src="https://www.freeiconspng.com/thumbs/magnifying-glass-icon/magnifying-glass-icon-28.png" alt="Magnifying" class="Ma" style="position: absolute; top: 350px; left: 750px; height:400px; width:400px">
+    </body>
+    </html>
+

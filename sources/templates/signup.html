@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       	
+            <title>Sign Up</title>
+     
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<meta charset="utf-8">
+    </head>
+    <body>
+    <div class="Signup">
+        <h1><div class='Signup'> </div>Sign Up</h1>
+    </div>
+        <form method="POST" action="{{ url_for('signup') }}" class="{{ 'has-error' if error else '' }}">
+        <div class="Signupinfo">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <label for="confirm_password">Confirmation du mot de pass:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+            <input class="button" type="submit" value="Sign Up">
+            <div class="button"> <a href="{{url_for('index')}}"style="color: #ffffff; text-decoration: none;">Accueil</a></div>
+        </div>
+            <div><span class="error-message">{{ error_message }}</span></div>
+        
+        </form>
+    </body>
+</html>
